@@ -13,7 +13,7 @@ function login() {
 
   // ✅ 2. Het juiste wachtwoord is ingevuld (Wie is het kleinste? -> Imane)
   if (lowerCode === "imane") {
-    window.location.href = "../messages/messages.html";
+    window.location.href = "messages/messages.html";
   } 
   // 😂 3. Glory probeert te liegen en zegt dat zij de kleinste is
   else if (lowerCode === "glory") {
