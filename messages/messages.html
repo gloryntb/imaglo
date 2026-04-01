@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">  <link rel="stylesheet" href="/music/css/music.css">
+  <title>Messages Board 💌</title>
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="stylesheet" href="css/messages.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+          <img src="../Logo.png" alt="logo">
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+          <a href="../messages/messages.html">Home</a>          <a href="../game/game.html">Game</a>
+          <a href="../moments/moments.html">Moments</a>
+          <a href="../lovenotes/lovenotes.html">Love Letter</a>
+          <a href="../music/music.html">Music</a> </div>
+      </nav>
+
+  <div class="controls-container" id="controlsContainer">
+    
+    <button class="toggle-controls-btn" id="toggleControlsBtn">➕ Voeg iets toe</button>
+    
+    <div class="controls-content" id="controlsContent">
+      <div class="text-input-area">
+        <textarea id="noteInput" placeholder="Typ hier je lief berichtje..."></textarea>
+        <button class="action-btn" id="addNoteBtn">Plak Post-it 📌</button>
+      </div>
+
+      <div style="color: #ff4b72; font-weight: bold; margin: 5px 0; text-align: center;">OF</div>
+
+      <div class="photo-input-area">
+        <label for="photoInput" class="custom-file-upload">
+          📷 Upload een Foto
+        </label>
+        <input type="file" id="photoInput" accept="image/*">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="board-area" id="boardArea">
+    </div>
+
+  <script src="../music/java/music.js"></script>
+  
+  <script type="module" src="java/firebase-config.js"></script>
+  
+  <script type="module" src="java/messages.js"></script>
+</body>
+</html>
