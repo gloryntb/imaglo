@@ -1,21 +1,21 @@
 // 1. DE SPEELLIJST
 const playlist = [
-    { title: "TEXAS HOLD 'EM", artist: "Beyoncé", src: "/music/songs/Beyoncé - TEXAS HOLD 'EM (Karaoke).mp3" },
-    { title: "Katapilla", artist: "Bruce Melodie", src: "/music/songs/Bruce Melodie - Katapilla lyrics (karaoke & Instrumental).mp3" },
-    { title: "Strange", artist: "Celeste", src: "/music/songs/Celeste - Strange (Karaoke Version).mp3" },
-    { title: "Sparks", artist: "Coldplay", src: "/music/songs/Coldplay - Sparks (Karaoke Version).mp3" },
-    { title: "Japanese Denim", artist: "Daniel Caesar", src: "/music/songs/Daniel Caesar - Japanese Denim (Karaoke Version).mp3" },
-    { title: "Always", artist: "Daniel Caesar", src: "/music/songs/Daniel Caesar - Always (Karaoke Version).mp3" },
-    { title: "Wagon Wheel", artist: "Darius Rucker", src: "/music/songs/DariusRucker_WagonWheel.mp3" },
-    { title: "Austin", artist: "Dasha", src: "/music/songs/Dasha_Austin.mp3" },
-    { title: "American Boy", artist: "Estelle ft. Kanye West", src: "/music/songs/Estelle ft. Kanye West - American Boy (Karaoke Version).mp3" },
-    { title: "God Gave Me Feet For Dancing", artist: "Ezra Collective", src: "/music/songs/Ezra Collective - God Gave Me Feet For Dancing (Instrumental).mp3" },
-    { title: "No One's Watching Me", artist: "Ezra Collective", src: "/music/songs/Ezra Collective - No One's Watching Me (Instrumental).mp3" },
-    { title: "Breaking Point", artist: "Leon Thomas", src: "/music/songs/Leon Thomas - Breaking Point (Instrumental).mp3" },
-    { title: "MUTT", artist: "Leon Thomas", src: "/music/songs/Leon Thomas - MUTT (Karaoke Version).mp3" },
-    { title: "rises the moon", artist: "Liana Flores", src: "/music/songs/Liana Flores - rises the moon (Karaoke Version).mp3" },
-    { title: "Life is a Highway", artist: "Rascal Flatts", src: "/music/songs/Life is a Highway - Cars (Rascal Flatts)  Karaoke Version  KaraFun.mp3" },
-    { title: "A Couple Minutes", artist: "Olivia Dean", src: "/music/songs/Olivia Dean - A Couple Minutes (Karaoke Version).mp3" }
+    { title: "TEXAS HOLD 'EM", artist: "Beyoncé", src: "/imaglo/music/songs/Beyoncé - TEXAS HOLD 'EM (Karaoke).mp3" },
+    { title: "Katapilla", artist: "Bruce Melodie", src: "/imaglo/music/songs/Bruce Melodie - Katapilla lyrics (karaoke & Instrumental).mp3" },
+    { title: "Strange", artist: "Celeste", src: "/imaglo/music/songs/Celeste - Strange (Karaoke Version).mp3" },
+    { title: "Sparks", artist: "Coldplay", src: "/imaglo/music/songs/Coldplay - Sparks (Karaoke Version).mp3" },
+    { title: "Japanese Denim", artist: "Daniel Caesar", src: "/imaglo/music/songs/Daniel Caesar - Japanese Denim (Karaoke Version).mp3" },
+    { title: "Always", artist: "Daniel Caesar", src: "/imaglo/music/songs/Daniel Caesar - Always (Karaoke Version).mp3" },
+    { title: "Wagon Wheel", artist: "Darius Rucker", src: "/imaglo/music/songs/DariusRucker_WagonWheel.mp3" },
+    { title: "Austin", artist: "Dasha", src: "/imaglo/music/songs/Dasha_Austin.mp3" },
+    { title: "American Boy", artist: "Estelle ft. Kanye West", src: "/imaglo/music/songs/Estelle ft. Kanye West - American Boy (Karaoke Version).mp3" },
+    { title: "God Gave Me Feet For Dancing", artist: "Ezra Collective", src: "/imaglo/music/songs/Ezra Collective - God Gave Me Feet For Dancing (Instrumental).mp3" },
+    { title: "No One's Watching Me", artist: "Ezra Collective", src: "/imaglo/music/songs/Ezra Collective - No One's Watching Me (Instrumental).mp3" },
+    { title: "Breaking Point", artist: "Leon Thomas", src: "/imaglo/music/songs/Leon Thomas - Breaking Point (Instrumental).mp3" },
+    { title: "MUTT", artist: "Leon Thomas", src: "/imaglo/music/songs/Leon Thomas - MUTT (Karaoke Version).mp3" },
+    { title: "rises the moon", artist: "Liana Flores", src: "/imaglo/music/songs/Liana Flores - rises the moon (Karaoke Version).mp3" },
+    { title: "Life is a Highway", artist: "Rascal Flatts", src: "/imaglo/music/songs/Life is a Highway - Cars (Rascal Flatts)  Karaoke Version  KaraFun.mp3" },
+    { title: "A Couple Minutes", artist: "Olivia Dean", src: "/imaglo/music/songs/Olivia Dean - A Couple Minutes (Karaoke Version).mp3" }
 ];
 
 // 2. STATUS VAN DE SPELER INLADEN
