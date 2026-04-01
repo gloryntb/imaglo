@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Notes 💌</title>
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="stylesheet" href="css/lovenotes.css">
+  <link rel="stylesheet" href="/music/css/music.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="../Logo.png" alt="logo">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="../messages/messages.html">Home</a>      
+      <a href="../game/game.html">Game</a>
+      <a href="../moments/moments.html">Moments</a>
+      <a href="../lovenotes/lovenotes.html">Love Letter</a>
+      <a href="../music/music.html">Music</a> </div>
+  </nav>
+
+  <header>
+    <h1>Voor jou 💌</h1>
+    <p class="instruction" id="mainInstruction">Klik op de envelop om hem te openen...</p>
+  </header>
+
+  <audio id="bgMusic" src="black_like_you.mp3" loop></audio>
+
+  <div class="envelope" id="envelope">
+    <div class="envelope-flap"></div>
+    <div class="envelope-front"></div>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay">
+      
+      <div class="flip-card" id="flipCard">
+        <div class="flip-card-inner">
+          
+          <div class="card-front">
+            <div>
+              <h2>Hey b,</h2>
+              <p>Vanaf het moment dat ik je heb ontmoet, heb ik altijd al gevoeld dat het iets meer was dan een simpele kennismaking. Het heeft me doen realiseren dat ik me nooit echt bewust was van wat liefde effectief betekende, totdat jij het me liet voelen.</p>
+              <p>En dat komende van iemand die ik enorm bewonder ook! Een vrouw die doorduwt, hoe moeilijk het ook is. Een vrouw die begrip zoekt in complexiteiten, hoe saai het ook is. Een vrouw die een warmte is voor anderen, en het allermeest voor mij, hoe onbewust ze daar zelf ook van is.</p>
+              <p>Men zegt: waar liefde is, is leven. En ik kan dan ook eerlijk toegeven dat ik me sinds ik je heb ontmoet zo levendig heb gevoeld. Ik adoreer je oprecht. Als we nu kijken naar de leuke dates die we hebben gedaan of andere activiteiten die we samen doen, kan ik niks anders aanvoelen dan leven. Zeker met die blik van je...</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span></span> 
+              <div class="flip-btn">Klik om om te draaien ➔</div>
+              <span></span> 
+            </div>
+          </div>
+
+          <div class="card-back">
+            <div>
+              <p>En dus schrijf ik deze brief. Een brief die je mag bewaren in je hart. Om aan je te tonen hoeveel ik van je hou. Ook al ben ik er vrij zeker van dat je je ervan bewust bent; ik doe graag zoveel moeite omdat jíj het bent.</p>
+              <p>Van de pooldate naar de Ikea-date naar de Brussel-date, er is zoveel gebeurd. De Imaglo Saga! En de komende saga's die nog zullen komen natuurlijk, hahaha. Ik heb naar elk van deze dates uitgekeken als het absolute hoogtepunt van mijn dag, week, maand of zelfs jaar.</p>
+              <p>Dus bij dezen wil ik zeggen dat ik echt zoveel van je hou. Laat deze lieve woorden resoneren met hoe je jezelf ziet en wees trots op de persoon die je bent. Because I sure am!</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+              <div class="flip-btn" style="align-self: auto;">⬅ Terug</div>
+              
+              <p style="text-align: right; font-family: 'Caveat', cursive, sans-serif; line-height: 1.1; margin: 0; font-size: 13px;">
+                Met veel liefde,<br>
+                <strong style="font-size: 15px;">Je boyfriend gloglo x</strong>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+  </div>
+
+  <script src="java/lovenotes.js"></script>
+  <script src="../music/java/music.js"></script>
+</body>
+</html>

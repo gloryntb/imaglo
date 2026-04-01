@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+:root {
+  --bg-color: #ffb4a9; 
+  --primary-color: #ff4b72;
+  --text-color: #333333;
+  --envelope-color: #ff6b8b;
+  --paper-color: #fdfbf7;
+  
+  --envelope-w: 280px;
+  --envelope-h: 180px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh; 
+  color: var(--text-color);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-top: calc(60px + env(safe-area-inset-top)); 
+}
+
+/* --- 💖 NAVBAR --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 100;
+}
+
+.logo img {
+  height: 35px;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Zorgt dat het hamburgersymbool NOOIT op desktop verschijnt */
+.menu-toggle {
+  display: none !important; 
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+/* --- BRIEF STYLING --- */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  width: 90%; 
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.instruction {
+  color: #777;
+  font-style: italic;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+/* Envelop Styling */
+.envelope {
+  position: relative;
+  width: var(--envelope-w);
+  height: var(--envelope-h);
+  background-color: var(--envelope-color);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: var(--envelope-color);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: center top; 
+  transition: transform 0.5s ease; 
+  z-index: 3;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ff4b72;
+  clip-path: polygon(0 40%, 0 100%, 100% 100%, 100% 40%, 50% 100%);
+  border-radius: 0 0 10px 10px;
+  z-index: 2;
+}
+
+/* --- 🌟 DE BRIEF ALS POP-UP (MODAL) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.flip-card {
+  width: 320px;
+  height: 480px;
+  perspective: 1000px;
+  cursor: pointer;
+  transform: scale(0.7);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.show .flip-card {
+  transform: scale(1);
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--paper-color);
+  border-radius: 8px;
+  padding: 22px; 
+  box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 16px; 
+  line-height: 1.35; 
+  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  text-align: left;
+}
+
+.card-front h2 {
+  font-family: 'Caveat', cursive, sans-serif;
+  color: var(--primary-color);
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.flip-btn {
+  align-self: center;
+  background-color: #fff;
+  padding: 6px 14px;
+  border: 1px solid var(--primary-color);
+  border-radius: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.flip-btn:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+/* 📱 Mobiel */
+@media (max-width: 768px) {
+  .menu-toggle { 
+    display: block !important; /* Toont het icoontje WEL op mobiel */
+  }
+
+  .nav-links {
+    display: none !important; /* Dwingt het menu om STANDAARD VERBORGEN te zijn op mobiel */
+    flex-direction: column;
+    position: absolute;
+    top: 60px; 
+    left: 0; 
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    gap: 15px;
+    text-align: center;
+    z-index: 1000;
+  }
+
+  .nav-links.active { 
+    display: flex !important; /* Toont het menu pas na een klik */
+  }
+
+  .flip-card {
+    width: 290px;
+    height: 460px;
+  }
+
+  .card-front, .card-back {
+    font-size: 14.5px;
+    padding: 16px;
+  }
+}
