@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>???</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .text {
+      font-size: 8vw;
+      text-align: center;
+      animation: flicker 1s infinite;
+    }
+
+    /* Glitch / flicker effect */
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    /* Subtle zoom effect */
+    .text:hover {
+      transform: scale(1.05);
+      transition: 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+<div class="text">
+  WHO IS YOU??? 👀
+</div>
+
+<!-- 🔊 AUDIO (zet hier jouw bestand) -->
+<audio id="susAudio" autoplay loop>
+  <source src="sus.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const audio = document.getElementById("susAudio");
+
+  // 1. We proberen het eerst toch automatisch (voor Android/PC)
+  window.onload = () => {
+    audio.play().catch(() => {
+      console.log("Autoplay geblokkeerd door browser (waarschijnlijk iPhone)");
+    });
+  };
+
+  // 🔥 2. DE IPHONE FIX: Zodra de gebruiker het scherm aanraakt, start de muziek!
+  document.addEventListener('click', function() {
+    audio.play();
+  }, { once: true }); // 'once: true' zorgt dat dit maar 1 keer wordt uitgevoerd
+</script>
+
+</body>
+</html>
