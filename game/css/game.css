@@ -1,0 +1,199 @@
+/* game.css - Volledige styling voor de game en navbar */
+
+/* ==========================
+   🌐 ALGEMENE BODY STYLING
+   ========================== */
+   body {
+    background-color: #ffb7b2; /* De egale zachtroze achtergrond */
+    font-family: Arial, sans-serif;
+    color: white;
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center; /* Brengt het pakketje naar het midden */
+    
+    min-height: 100dvh; 
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* ==========================
+   💖 NAVBAR STYLING 
+   ========================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.logo img {
+    height: 40px;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #ff4b72; 
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff4b72;
+}
+
+/* Mobiele Styling voor het menu */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* ==========================
+   🎮 DE SPEL CONTAINER 
+   ========================== */
+.game-container {
+    display: flex;
+    flex-direction: column; /* 🌟 Dwingt ALLES van het spel onder elkaar */
+    align-items: center;    
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;       
+    margin-top: 80px; /* Zorgt dat het onder de witte balk start */
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#progress-text {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 15px;
+    display: block;
+}
+
+#lives {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+}
+
+#question {
+    font-size: 1.8rem;
+    font-weight: normal;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+/* ==========================
+   💖 DE ANTWOORD-KNOPPEN 
+   ========================== */
+.btn {
+    display: block;        /* 🌟 Zorgt dat ze een eigen regel claimen */
+    margin: 8px auto;      /* 🌟 Ruimte boven en onder de knop */
+    padding: 15px 20px;
+    
+    width: 100%;           /* 🌟 Pakt de breedte van de container */
+    max-width: 320px;      /* 🌟 Voorkomt dat de knop té breed wordt */
+    
+    border-radius: 12px;
+    border: none;
+    background-color: #ffccd5; 
+    color: black !important;   /* 🌟 Forceert zwarte tekst */
+    
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    box-sizing: border-box;
+}
+
+.btn:hover {
+    background-color: #ffb3c1;
+}
+
+.btn:focus, .btn:active {
+    outline: none;
+    border: none;
+}
+
+/* FEEDBACK BIJ GOED/FOUT */
+#feedback {
+    font-size: 20px;
+    margin: 15px;
+    font-weight: bold;
+    height: 25px; 
+}
+
+.correct { color: #2ecc71; }
+.wrong { color: #e74c3c; }
+
+/* ==========================
+   📊 PROGRESS BAR STYLING
+   ========================== */
+.progress-container {
+    width: 100%;
+    max-width: 300px;      
+    height: 16px;          
+    background-color: rgba(255, 255, 255, 0.3); 
+    border-radius: 10px;
+    margin: 10px auto 5px auto; 
+    overflow: hidden;      
+    position: relative;
+}
+
+/* 🚨 HIER IS DE NAAM VERANDERD: */
+#quiz-progress-bar {
+    height: 100%;
+    width: 0%;                     
+    background-color: #ff4d6d; 
+    border-radius: 10px;
+    transition: width 0.4s ease; 
+}

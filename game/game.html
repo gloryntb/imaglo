@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="stylesheet" href="/music/css/music.css">
+  <title>Love Game 🎮💖</title>
+  
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+  <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body class="game-page">
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="../Logo.png" alt="logo">
+    </div>
+    
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    
+    <div class="nav-links" id="navLinks">
+      <a href="../messages/messages.html">Home</a>
+      <a href="../game/game.html">Game</a>
+      <a href="../moments/moments.html">Moments</a>
+      <a href="../lovenotes/lovenotes.html">Love Letter</a>
+      <a href="../music/music.html">Music</a> </div>
+  </nav>
+
+  <div class="game-container">
+    <h1 id="level">Level</h1>
+    
+    <div class="progress-container">
+      <div id="quiz-progress-bar"></div>
+    </div>
+    
+    <span id="progress-text">0%</span>
+    <p id="lives">❤️ Lives: 3</p>
+
+    <div id="question">Vraag komt hier...</div>
+    <p id="feedback"></p>
+    
+    <button class="btn" id="a0" onclick="checkAnswer(0)">A</button>
+    <button class="btn" id="a1" onclick="checkAnswer(1)">B</button>
+    <button class="btn" id="a2" onclick="checkAnswer(2)">C</button>
+    <button class="btn" id="a3" onclick="checkAnswer(3)">D</button>
+  </div>
+
+  <script src="../music/java/music.js" defer></script>
+
+  <script src="java/questions.js" defer></script>
+  <script src="java/game.js" defer></script>
+  
+  <script>
+    // Script voor het mobiele hamburger menu
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
