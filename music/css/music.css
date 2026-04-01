@@ -1,0 +1,187 @@
+#global-music-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    /* 🎨 Zwart maar lichtjes transparant (85% dekkend) */
+    background: rgba(24, 24, 24, 0.85);
+    /* 🍦 Filter om de achtergrond erdoorheen te laten 'blurren' voor een modern effect */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 9999;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+    
+    /* Vloeiende animatie voor het op en neer duiken */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    transform: translateY(0);
+}
+
+/* De volledige balk */
+.player-full-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    width: 100%;
+    box-sizing: border-box;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Zijkanten en midden van de balk */
+.player-left { display: flex; flex-direction: column; width: 30%; }
+.player-title { font-weight: bold; font-size: 14px; color: #fff; }
+.player-artist { font-size: 12px; color: rgba(255, 255, 255, 0.6); } /* Iets zachter wit */
+.player-center { display: flex; flex-direction: column; align-items: center; width: 40%; }
+
+.player-controls { display: flex; gap: 20px; align-items: center; margin-bottom: 5px; }
+.player-controls button { background: none; border: none; font-size: 18px; cursor: pointer; color: rgba(255, 255, 255, 0.6); transition: color 0.2s; }
+.player-controls button:hover { color: #fff; }
+#p-play { font-size: 24px; color: #fff; }
+
+.player-progress-container { display: flex; align-items: center; gap: 10px; width: 100%; }
+.player-progress-container span { font-size: 11px; color: rgba(255, 255, 255, 0.6); min-width: 30px; }
+
+/* 🎨 Accentkleur voor de balkjes: we gaan voor een warm oud-roze dat matcht met je achtergrond */
+#p-progress-bar { flex-grow: 1; height: 4px; accent-color: #e5989b; cursor: pointer; }
+.player-right { display: flex; align-items: center; gap: 15px; justify-content: flex-end; width: 30%; }
+#p-volume { width: 80px; height: 4px; accent-color: #e5989b; }
+
+/* Inklap knop (pijltje) */
+#p-minimize {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+#p-minimize:hover { color: #fff; }
+
+/* 🎨 Het kleine muzieknoot icoon (krijgt ook de warme roze kleur) */
+.player-icon-content {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    cursor: pointer;
+    background: #e5989b; 
+    color: white;
+}
+
+/* 1. DE DUIK-ANIMATIE */
+#global-music-player.slide-down {
+    transform: translateY(100%);
+}
+
+/* 2. DE MINIMIZED BAL */
+#global-music-player.minimized {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    
+    left: auto !important;
+    right: 20px !important; 
+    bottom: 20px !important;
+    
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    overflow: hidden;
+    
+    transform: translateY(0) !important;
+}
+
+#global-music-player.minimized .player-full-content {
+    display: none;
+    opacity: 0;
+}
+
+#global-music-player.minimized .player-icon-content {
+    display: flex;
+}
+
+#global-music-player:not(.minimized):not(.slide-down) {
+    transform: translateY(0);
+}
+
+/* 🎨 EXTRA DUIDELIJKE SHUFFLE & REPEAT INDICATORS (Matcht met het roze thema) */
+.player-controls button#p-shuffle.active,
+.player-controls button#p-repeat.active {
+    color: #ffffff !important;
+    background-color: #e5989b; /* Het zachte roze in plaats van groen */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(229, 152, 155, 0.4);
+}
+
+.player-controls button#p-shuffle,
+.player-controls button#p-repeat {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Mobiele optimalisatie voor smartphones */
+@media (max-width: 768px) {
+    /* 1. We veranderen de indeling naar een kolom (alles onder elkaar) */
+    .player-full-content {
+        flex-direction: column;
+        gap: 15px; /* Geeft wat ademruimte tussen de elementen */
+        padding: 15px 20px;
+    }
+
+    /* 2. De titel en artiest schuiven naar boven en centreren we */
+    .player-left {
+        display: flex;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .player-title {
+        font-size: 14px;
+    }
+    .player-artist {
+        font-size: 12px;
+    }
+
+    /* 3. Het middenstuk (de knoppen en de balk) pakt de volledige breedte */
+    .player-center {
+        width: 100%;
+    }
+    .player-controls {
+        gap: 25px; /* Iets meer ruimte tussen de knoppen voor dikke duimen */
+    }
+
+    /* 4. De volumebalk en de minimaliseerknop onderaan */
+    .player-right {
+        display: flex;
+        width: 100%;
+        justify-content: space-between; /* Volume links, minimaliseerknop rechts */
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtiel scheidingslijntje */
+        padding-top: 10px;
+    }
+    
+    /* Zorg dat de volumebalk op mobiel niet te breed is */
+    #p-volume {
+        width: 100px;
+    }
+
+    /* 5. Als de speler ingeklapt is tot een bolletje */
+    #global-music-player.minimized {
+        right: 15px !important;
+        bottom: 15px !important;
+        width: 55px;
+        height: 55px;
+    }
+}

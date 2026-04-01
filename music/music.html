@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Playlist 🎵</title>
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="stylesheet" href="css/music.css">
+  <style>
+    /* Algemene pagina styling */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffb4a9; 
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100dvh;
+      box-sizing: border-box;
+      padding-top: 100px; /* Ruimte voor de navbar */
+      padding-bottom: 120px; /* Ruimte voor de speler onderaan */
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+    .logo img { height: 35px; }
+    
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #ff4b72; }
+
+    /* Hamburger menu voor mobiel */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* --- PLAYLIST CONTAINER --- */
+    .playlist-container {
+      background: rgba(255, 255, 255, 0.95);
+      width: 90%;
+      max-width: 600px;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #ff4b72;
+      margin-bottom: 5px;
+    }
+
+    p.subtitle {
+      color: #777;
+      font-style: italic;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    .song-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .song-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+      background: #fff;
+      border: 1px solid rgba(255, 75, 114, 0.1);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .song-item:hover {
+      transform: translateX(5px);
+      border-color: #ff4b72;
+      background: #fff9fa;
+    }
+
+    .song-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .song-title {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .song-artist {
+      font-size: 13px;
+      color: #777;
+    }
+
+    .play-icon {
+      color: #ff4b72;
+      font-size: 18px;
+    }
+
+    /* Mobiele stijlen voor het menu */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+      }
+
+      .nav-links.active { display: flex; }
+      
+      .hamburger.is-active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .hamburger.is-active span:nth-child(2) { opacity: 0; }
+      .hamburger.is-active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="../Logo.png" alt="logo">
+    </div>
+    
+    <div class="hamburger" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="../messages/messages.html">Home</a>
+      <a href="../game/game.html">Game</a>
+      <a href="../moments/moments.html">Moments</a>
+      <a href="../lovenotes/lovenotes.html">Love Letter</a>
+      <a href="music.html">Music</a> 
+    </div>
+  </nav>
+
+  <div class="playlist-container">
+    <h1>Onze Playlist 🎵</h1>
+    <p class="subtitle">Klik op een nummer om het af te spelen</p>
+    
+    <div class="song-list" id="songList"></div>
+  </div>
+
+  <script src="java/music.js"></script>
+
+  <script>
+    // Dit script regelt de weergave van de liedjes en het hamburgermenu
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // 1. LIEDJES INLADEN
+      const listContainer = document.getElementById('songList');
+      
+      if (listContainer && typeof playlist !== 'undefined') {
+        playlist.forEach((track, index) => {
+          const item = document.createElement('div');
+          item.className = 'song-item';
+          item.innerHTML = `
+            <div class="song-info">
+              <span class="song-title">${track.title}</span>
+              <span class="song-artist">${track.artist}</span>
+            </div>
+            <div class="play-icon">▶</div>
+          `;
+          
+          // Klikken op een nummer laadt het in de balk onderaan!
+          item.addEventListener('click', () => {
+            currentTrackIndex = index;
+            loadTrack(currentTrackIndex);
+            audio.play();
+            document.getElementById('p-play').textContent = '⏸';
+            localStorage.setItem('isPlaying', 'true');
+          });
+          
+          listContainer.appendChild(item);
+        });
+      }
+
+      // 2. HAMBURGER MENU VOOR MOBIEL
+      const hamburger = document.getElementById('hamburgerBtn');
+      const navMenu = document.getElementById('navLinks');
+
+      if (hamburger && navMenu) {
+        const toggleMenu = (e) => {
+          e.preventDefault();
+          navMenu.classList.toggle('active');
+          hamburger.classList.toggle('is-active');
+        };
+
+        hamburger.addEventListener('click', toggleMenu);
+        hamburger.addEventListener('touchstart', toggleMenu);
+      }
+    });
+  </script>
+</body>
+</html>
